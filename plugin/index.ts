@@ -64,7 +64,7 @@ export class WebpackObfuscatorPlugin {
                             if (this.options.sourceMap && fileName.toLowerCase().endsWith('.map')) {
                                 let srcName = fileName.toLowerCase().substr(0, fileName.length - 4);
 
-                                if (!this.shouldExclude(srcName)) {
+                                if (this.shouldExclude(srcName)) {
                                     const transferredSourceMap = transferSourceMap({
                                         fromSourceMap: sourcemapOutput[srcName],
                                         toSourceMap: compilation.assets[fileName].source()
